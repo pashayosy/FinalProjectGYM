@@ -1,0 +1,15 @@
+/Users/yosypasha/Projects/FinalProjectGYM/bin/Debug/net7.0/FinalProjectGYM
+/Users/yosypasha/Projects/FinalProjectGYM/bin/Debug/net7.0/FinalProjectGYM.deps.json
+/Users/yosypasha/Projects/FinalProjectGYM/bin/Debug/net7.0/FinalProjectGYM.runtimeconfig.json
+/Users/yosypasha/Projects/FinalProjectGYM/bin/Debug/net7.0/FinalProjectGYM.dll
+/Users/yosypasha/Projects/FinalProjectGYM/bin/Debug/net7.0/FinalProjectGYM.pdb
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.csproj.AssemblyReference.cache
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.AssemblyInfoInputs.cache
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.AssemblyInfo.cs
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.csproj.CoreCompileInputs.cache
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.dll
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/refint/FinalProjectGYM.dll
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.pdb
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.genruntimeconfig.cache
+/Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/ref/FinalProjectGYM.dll
