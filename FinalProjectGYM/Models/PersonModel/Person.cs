@@ -32,14 +32,14 @@
             get { return _lastName; }
         }
         private string _lastName;
-		public char	  Gender
+		public string Gender
         { 
             set
             {
                 if (PersonValidation.IsCorrectGender(value))
-                    _gender = value;
+                    _gender = value[0];
             }
-            get { return _gender; }
+            get { return _gender.ToString(); }
         }
         private char _gender;
 		public string Date
@@ -108,9 +108,18 @@
             _email = email;
         }
 
-
-
-
+        public override string ToString()
+        {
+            return $"Id : {_id}\n" +
+                   $"Name : {_name}\n" +
+                   $"Last Name : {_lastName}\n" +
+                   $"Gender : {_gender}\n" +
+                   $"Date of birth : {_date}\n" +
+                   $"City : {_city}\n" +
+                   $"Address : {_address}\n" +
+                   $"Phone : {_phone}\n" +
+                   $"Email : {_email}\n";
+        }
     }
 }
 

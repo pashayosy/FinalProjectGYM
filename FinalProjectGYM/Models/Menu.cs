@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using FinalProjectGYM.Models.ClientModel;
+using System.Text;
 
 namespace FinalProjectGYM.Models
 {
@@ -84,17 +85,22 @@ namespace FinalProjectGYM.Models
             switch (position)
             {
                 case (int)PERSONFUNCTION.ADD:
+                    ClientHandle.ClientCreate();
                     break;
                 case (int)PERSONFUNCTION.EDIT:
                     break;
                 case (int)PERSONFUNCTION.DELETE:
                     break;
                 case (int)PERSONFUNCTION.LIST:
+                    ClientHandle.ListPrint(FileHandle.ClientListCreate());
                     break;
                 case (int)PERSONFUNCTION.RETURN:
-                    MenuInteraction();
                     break;
             }
+
+            Console.WriteLine("Press enter to go back to menu");
+            Console.ReadLine();
+            MenuInteraction();
         }
 
         public static void TrainerFunctionDo(int position)//start methods that the user choose

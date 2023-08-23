@@ -27,3 +27,6 @@ X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\ne
 X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.pdb
 X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.genruntimeconfig.cache
 X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\ref\FinalProjectGYM.dll
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\bin\Debug\net7.0\Newtonsoft.Json.dll
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.csproj.AssemblyReference.cache
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.csproj.CopyComplete

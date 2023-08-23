@@ -9,33 +9,21 @@ public static class FileHandle
 
     const string CLIENTFILENAME = "Data.txt";
     const string TRAINERFILENAME = "Data.txt";
-    public static void ClientAdd(Client client, bool isAddingFirstTime)//add client to the folder data base
+    public static void ClientAdd(Client client)//add client to the folder data base
     {
         string clientFolderPath = Path.Combine(CLIENTFOLDER, client.Id);
 
-        if (TryToCreateFolder(clientFolderPath) || !isAddingFirstTime) 
-        {
-            string ClientFilePath = Path.Combine(clientFolderPath, CLIENTFILENAME);
-            string json = JsonConvert.SerializeObject(client);
-            File.WriteAllText(ClientFilePath, json);
-        }
-        else
-        {
-            Console.WriteLine("This client exist in the system !!!");
-            Console.WriteLine("You can change the info in the edit tab ");
-        }
+        TryToCreateFolder(clientFolderPath);
+        string ClientFilePath = Path.Combine(clientFolderPath, CLIENTFILENAME);
+        string json = JsonConvert.SerializeObject(client);
+        File.WriteAllText(ClientFilePath, json);
     }
 
-    private static bool TryToCreateFolder(string clientFolderPath)//check if the folder exist
+    private static void TryToCreateFolder(string clientFolderPath)//check if the folder exist
     {
         if (!Directory.Exists(clientFolderPath))
         {
             Directory.CreateDirectory(clientFolderPath);
-            return true;
-        }
-        else 
-        { 
-            return false;
         }
     }
 
@@ -48,22 +36,22 @@ public static class FileHandle
             string json = File.ReadAllText(ClientFilePath);
             Client client = JsonConvert.DeserializeObject<Client>(json);
             client.IsActive = false;
-            ClientAdd(client, false);
+            ClientAdd(client);
         }
     }
 
     public static Client[] ClientListCreate()//create list of client modify it(remove all inActive clients) and return the active
     {
-        string[] allClientPatchs = Directory.GetDirectories(CLIENTFOLDER);
+        string clientFolderPath = Path.Combine(CLIENTFOLDER);
+        string[] allClientPatchs = Directory.GetDirectories(clientFolderPath);
         Client[] clients = new Client[allClientPatchs.Length];
-        int index = 0;
 
         for (int i = 0; i < allClientPatchs.Length; i++) 
         {
             string[] files = Directory.GetFiles(allClientPatchs[i]);
             string json = File.ReadAllText(files[0]);
             Client client = JsonConvert.DeserializeObject<Client>(json);
-            clients[index] = client;
+            clients[i] = client;
         }
 
         return DeleteNonActiveClients(clients);
@@ -91,5 +79,12 @@ public static class FileHandle
         }
 
         return activeClient;
+    }
+
+    public static bool IsClientExist(string id)
+    {
+        string clientFolderPath = Path.Combine(CLIENTFOLDER, id);
+
+        return Directory.Exists(clientFolderPath);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FinalProjectGYM.Models.PersonModel;
+using System.Text.Json.Serialization;
 
 namespace FinalProjectGYM.Models.ClientModel
 {
@@ -26,7 +27,7 @@ namespace FinalProjectGYM.Models.ClientModel
         {
             set
             {
-                if (ClientValidation.IsCorrectHeight(value))
+                if (ClientValidation.IsCorrectWeight(value))
                 {
                     _weight = double.Parse(value);
                     Bmi = _weight / Math.Pow(_height, 2);
@@ -52,8 +53,16 @@ namespace FinalProjectGYM.Models.ClientModel
         {
             _height = height;
             _weight = weight;
-            Bmi = weight / Math.Pow(height, 2);
+            Bmi = _weight / Math.Pow(_height, 2);
             _isActive = true;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + 
+                    $"Height : {_height}\n" +
+                    $"Weight : {_weight}\n" +
+                    $"Bmi : {Bmi}\n";
         }
     }
 }

@@ -37,9 +37,16 @@ namespace FinalProjectGYM.Models.TrainerModel
 
         public Trainer(string id, string name, string lastName, char gender, string date, string city, string address, string phone, string email, BankDetails bankAccount, string profession) : base(id, name, lastName, gender, date, city, address, phone, email)
         {
-            bankAccount = new BankDetails(bankAccount);
-            Profession = profession;
+            _bankAccount = new BankDetails(bankAccount);
+            _profession = profession;
             _isActive = true;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() +
+                    $"Bank account : {_bankAccount.BankName} + {_bankAccount.BankBranch} + {_bankAccount.BankAccountNumber}\n" +
+                    $"Profession : {Profession}\n";
         }
     }
 }

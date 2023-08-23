@@ -63,9 +63,9 @@ namespace FinalProjectGYM.Models.PersonModel
             return true;
         }
 
-        public static bool IsCorrectGender(char gender)//check if the gender is correct
+        public static bool IsCorrectGender(string gender)//check if the gender is correct
 		{
-			if (char.ToLower(gender) == 'm' || char.ToLower(gender) == 'f' || char.ToLower(gender) == 'o')
+			if (gender.Length == 1 && (char.ToLower(gender[0]) == 'm' || char.ToLower(gender[0]) == 'f' || char.ToLower(gender[0]) == 'o'))
 				return true;
 
             Console.WriteLine("\"You entered an unknown character for gender, please try again!”\n“Remember you can use only this options: F , M, O.\"");
@@ -76,34 +76,48 @@ namespace FinalProjectGYM.Models.PersonModel
 		{
 			if (date.Length != 10)
 			{
-				Console.WriteLine("\"You' entered an invalid date of birth. Please input your date of birth in the following manner: XX(day)/XX(month)/XXXX(year) with the input being ONLY numbers.. \"");
+				Console.WriteLine("You entered an invalid date of birth. Please input your date of birth in the following manner: XX(day)/XX(month)/XXXX(year) with the input being ONLY numbers..");
 				return false;
 			}
 
-			int day;
+			int counterForwardSlash = 0;
+			for (int i = 0; i < date.Length; i++)
+			{
+				if (date[i] == '/')
+                    counterForwardSlash++;
+
+            }
+
+			if (counterForwardSlash != 2)
+            {
+                Console.WriteLine("You entered an invalid date of birth. Please input your date of birth in the following manner: XX(day)/XX(month)/XXXX(year) with the input being ONLY numbers.. ");
+                return false;
+            }
+
+            int day;
 			int month;
 			int year;
 
-			bool isCorrect = getNumberFromDate(date, out day, out month, out year);//for later user to add date number validation
+			bool isCorrect = ParseDate(date, out day, out month, out year);//for later user to add date number validation
 
 			if (isCorrect)
 			{
 				return true;
 			}
 			
-            Console.WriteLine("\"You' entered an invalid date of birth. Please input your date of birth in the following manner: XX(day)/XX(month)/XXXX(year) with the input being ONLY numbers.. \"");
+            Console.WriteLine("You entered an invalid date of birth. Please input your date of birth in the following manner: XX(day)/XX(month)/XXXX(year) with the input being ONLY numbers..");
             return false;
 
         }
 
-        private static bool getNumberFromDate(string date, out int day,out int month, out int year)//parse the date to 3 ints because the size is define and will not be changed
+        private static bool ParseDate(string date, out int day,out int month, out int year)//parse the date to 3 ints because the size is define and will not be changed
         {
 			bool isCorrect;
 
 			date = date.Replace("/", "");
 			isCorrect = int.TryParse(date.Substring(0, 2), out day);
-			isCorrect &= int.TryParse(date.Substring(2, 4), out month);
-			isCorrect &= int.TryParse(date.Substring(4, date.Length), out year);
+			isCorrect &= int.TryParse(date.Substring(2, 2), out month);
+			isCorrect &= int.TryParse(date.Substring(4, 4), out year);
 
 			return isCorrect;
         }
