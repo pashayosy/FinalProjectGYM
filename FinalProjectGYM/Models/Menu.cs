@@ -1,4 +1,5 @@
 ﻿using FinalProjectGYM.Models.ClientModel;
+using FinalProjectGYM.Models.PersonModel;
 using System.Text;
 
 namespace FinalProjectGYM.Models
@@ -82,18 +83,37 @@ namespace FinalProjectGYM.Models
 
         public static void ClientFunctionDo(int position)//start methods that the user choose
         {
+            string id;
             switch (position)
             {
                 case (int)PERSONFUNCTION.ADD:
                     ClientHandle.ClientCreate();
                     break;
+
                 case (int)PERSONFUNCTION.EDIT:
+                    Console.WriteLine("Please enter a exist id");
+                    while (!PersonValidation.IsCorrectId(id = Console.ReadLine()) || !FileHandle.IsClientExist(id)) 
+                    {
+                        Console.WriteLine("The id not correct or this id isn't exist");
+                    }
+                    int choose = Menu.createMenu(new string[]{"Id","Name","Last Name","Gender","Date of birth","City","Address","Phone","Email","Height","Weight"});
+                    ClientHandle.ClientEdit(choose, id);
                     break;
+
                 case (int)PERSONFUNCTION.DELETE:
+                    
+                    Console.WriteLine("Please enter a exist id");
+                    while (!PersonValidation.IsCorrectId(id = Console.ReadLine()) || !FileHandle.IsClientExist(id)) 
+                    {
+                        Console.WriteLine("The id not correct or this id isn't exist");
+                    }
+                    FileHandle.ClientRemove(id);
                     break;
+
                 case (int)PERSONFUNCTION.LIST:
                     ClientHandle.ListPrint(FileHandle.ClientListCreate());
                     break;
+
                 case (int)PERSONFUNCTION.RETURN:
                     break;
             }

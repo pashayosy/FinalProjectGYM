@@ -87,4 +87,21 @@ public static class FileHandle
 
         return Directory.Exists(clientFolderPath);
     }
+
+    public static void ClientUpdateIdChanged(Client client, string id)
+    {
+        string clientFolderPath = Path.Combine(CLIENTFOLDER, id);
+        File.Delete(clientFolderPath);
+        ClientAdd(client);
+    }
+
+    public static Client GetClientById(string id)
+    {
+        string clientFolderPath = Path.Combine(CLIENTFOLDER, id);
+        string ClientFilePath = Path.Combine(clientFolderPath, CLIENTFILENAME);
+        string json = File.ReadAllText(ClientFilePath);
+        Client client = JsonConvert.DeserializeObject<Client>(json);
+
+        return client;
+    }
 }
