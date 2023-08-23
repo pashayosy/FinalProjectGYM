@@ -40,11 +40,20 @@ namespace FinalProjectGYM.Models.ClientModel
 
         public double Bmi { private set; get; }
 
+        private bool _isActive;
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set { _isActive = value; }
+        }
+
+
         public Client(string id, string name, string lastName, char gender, string date, string city, string address, string phone, string email, double height, double weight) : base(id, name, lastName, gender, date, city, address, phone, email)
         {
             _height = height;
             _weight = weight;
             Bmi = weight / Math.Pow(height, 2);
+            _isActive = true;
         }
     }
 }

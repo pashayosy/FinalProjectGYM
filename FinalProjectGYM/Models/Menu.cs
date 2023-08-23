@@ -13,10 +13,13 @@ namespace FinalProjectGYM.Models
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Welcome to Gym Application!");
             Console.ResetColor();
-            Console.WriteLine("\nUse \u2191 and \u2193 to navigate and press \u001b[32mEnter/Return\u001b[0m to select:");
+            Console.Write("\nUse \u2191 and \u2193 to navigate and press ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Enter");
+            Console.ResetColor();
+            Console.Write(" to select:\n");
             (int left, int top) = Console.GetCursorPosition();
             var option = 1;
-            var decorator = "✅ \u001b[32m";
             ConsoleKeyInfo key;
             bool isSelected = false;
 
@@ -26,7 +29,17 @@ namespace FinalProjectGYM.Models
 
                 for (int i = 0; i < optionNames.Length; i++)
                 {
-                    Console.WriteLine($"{(option == i + 1 ? decorator : "   ")}{optionNames[i]}\u001b[0m ");
+                    if (option == i + 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"{optionNames[i]}");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{optionNames[i]}");
+                    }
+                    
                 }
 
                 key = Console.ReadKey(false);
@@ -62,6 +75,7 @@ namespace FinalProjectGYM.Models
             else
             {
                 position = Menu.createMenu(new string[] { "Add Coach", "Edit Coach", "Delete Coach", "List all Coach", "Return" });
+                TrainerFunctionDo(position);
             }
         }
 
@@ -78,9 +92,28 @@ namespace FinalProjectGYM.Models
                 case (int)PERSONFUNCTION.LIST:
                     break;
                 case (int)PERSONFUNCTION.RETURN:
+                    MenuInteraction();
                     break;
             }
         }
-	}
+
+        public static void TrainerFunctionDo(int position)//start methods that the user choose
+        {
+            switch (position)
+            {
+                case (int)PERSONFUNCTION.ADD:
+                    break;
+                case (int)PERSONFUNCTION.EDIT:
+                    break;
+                case (int)PERSONFUNCTION.DELETE:
+                    break;
+                case (int)PERSONFUNCTION.LIST:
+                    break;
+                case (int)PERSONFUNCTION.RETURN:
+                    MenuInteraction();
+                    break;
+            }
+        }
+    }
 }
 

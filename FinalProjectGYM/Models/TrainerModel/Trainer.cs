@@ -26,10 +26,20 @@ namespace FinalProjectGYM.Models.TrainerModel
         }
         private string _profession;
 
+        private bool _isActive;
+
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set { _isActive = value; }
+        }
+
+
         public Trainer(string id, string name, string lastName, char gender, string date, string city, string address, string phone, string email, BankDetails bankAccount, string profession) : base(id, name, lastName, gender, date, city, address, phone, email)
         {
             bankAccount = new BankDetails(bankAccount);
             Profession = profession;
+            _isActive = true;
         }
     }
 }

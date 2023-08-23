@@ -13,3 +13,17 @@
 /Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.pdb
 /Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/FinalProjectGYM.genruntimeconfig.cache
 /Users/yosypasha/Projects/FinalProjectGYM/obj/Debug/net7.0/ref/FinalProjectGYM.dll
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\bin\Debug\net7.0\FinalProjectGYM.exe
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\bin\Debug\net7.0\FinalProjectGYM.deps.json
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\bin\Debug\net7.0\FinalProjectGYM.runtimeconfig.json
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\bin\Debug\net7.0\FinalProjectGYM.dll
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\bin\Debug\net7.0\FinalProjectGYM.pdb
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.GeneratedMSBuildEditorConfig.editorconfig
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.AssemblyInfoInputs.cache
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.AssemblyInfo.cs
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.csproj.CoreCompileInputs.cache
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.dll
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\refint\FinalProjectGYM.dll
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.pdb
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\FinalProjectGYM.genruntimeconfig.cache
+X:\Visual studio projects Win\Projects\FinalProject\FinalProjectGYM\obj\Debug\net7.0\ref\FinalProjectGYM.dll
