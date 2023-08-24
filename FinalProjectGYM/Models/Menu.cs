@@ -1,5 +1,6 @@
 ﻿using FinalProjectGYM.Models.ClientModel;
 using FinalProjectGYM.Models.PersonModel;
+using FinalProjectGYM.Models.TrainerModel;
 using System.Text;
 
 namespace FinalProjectGYM.Models
@@ -125,20 +126,39 @@ namespace FinalProjectGYM.Models
 
         public static void TrainerFunctionDo(int position)//start methods that the user choose
         {
+            string id;
             switch (position)
             {
                 case (int)PERSONFUNCTION.ADD:
+                    TrainerHandle.TrainerCreate();
                     break;
                 case (int)PERSONFUNCTION.EDIT:
+                    Console.WriteLine("Please enter a exist id");
+                    while (!PersonValidation.IsCorrectId(id = Console.ReadLine()) || !FileHandle.IsTrainerExist(id))
+                    {
+                        Console.WriteLine("The id not correct or this id isn't exist");
+                    }
+                    int choose = Menu.createMenu(new string[] { "Id", "Name", "Last Name", "Gender", "Date of birth", "City", "Address", "Phone", "Email","Bank Name", "Bank branch", "Bank account number", "Profession"});
+                    TrainerHandle.TrainerEdit(choose, id);
                     break;
                 case (int)PERSONFUNCTION.DELETE:
+                    Console.WriteLine("Please enter a exist id");
+                    while (!PersonValidation.IsCorrectId(id = Console.ReadLine()) || !FileHandle.IsClientExist(id))
+                    {
+                        Console.WriteLine("The id not correct or this id isn't exist");
+                    }
+                    FileHandle.TrainerRemove(id);
                     break;
                 case (int)PERSONFUNCTION.LIST:
+                    TrainerHandle.ListPrint(FileHandle.TrainerListCreate());
                     break;
-                case (int)PERSONFUNCTION.RETURN:
-                    MenuInteraction();
+                case (int)PERSONFUNCTION.RETURN:;
                     break;
             }
+
+            Console.WriteLine("Press enter to go back to menu");
+            Console.ReadLine();
+            MenuInteraction();
         }
     }
 }

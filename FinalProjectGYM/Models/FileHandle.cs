@@ -1,4 +1,5 @@
 ﻿using FinalProjectGYM.Models.ClientModel;
+using FinalProjectGYM.Models.TrainerModel;
 using Newtonsoft.Json;
 using System;
 
@@ -19,11 +20,11 @@ public static class FileHandle
         File.WriteAllText(ClientFilePath, json);
     }
 
-    private static void TryToCreateFolder(string clientFolderPath)//check if the folder exist
+    private static void TryToCreateFolder(string folderPathToCheck)//check if the folder exist
     {
-        if (!Directory.Exists(clientFolderPath))
+        if (!Directory.Exists(folderPathToCheck))
         {
-            Directory.CreateDirectory(clientFolderPath);
+            Directory.CreateDirectory(folderPathToCheck);
         }
     }
 
@@ -91,7 +92,7 @@ public static class FileHandle
     public static void ClientUpdateIdChanged(Client client, string id)
     {
         string clientFolderPath = Path.Combine(CLIENTFOLDER, id);
-        File.Delete(clientFolderPath);
+        DeleteDirectory(clientFolderPath);
         ClientAdd(client);
     }
 
@@ -103,5 +104,111 @@ public static class FileHandle
         Client client = JsonConvert.DeserializeObject<Client>(json);
 
         return client;
+    }
+
+    public static void TrainerAdd(Trainer trainer)//add Trainer to the folder data base
+    {
+        string trainerFolderPath = Path.Combine(TRAINERFOLDER, trainer.Id);
+
+        TryToCreateFolder(trainerFolderPath);
+        string trainerFilePath = Path.Combine(trainerFolderPath, TRAINERFILENAME);
+        string json = JsonConvert.SerializeObject(trainer);
+        File.WriteAllText(trainerFilePath, json);
+    }
+
+    public static void TrainerRemove(string id)//set the active of the trainer to false
+    {
+        string trainerFolderPath = Path.Combine(TRAINERFOLDER, id);
+        if (Directory.Exists(trainerFolderPath))
+        {
+            string trainerFilePath = Path.Combine(trainerFolderPath, TRAINERFILENAME);
+            string json = File.ReadAllText(trainerFilePath);
+            Trainer trainer = JsonConvert.DeserializeObject<Trainer>(json);
+            trainer.IsActive = false;
+            TrainerAdd(trainer);
+        }
+    }
+
+    public static Trainer[] TrainerListCreate()//create list of client modify it(remove all inActive clients) and return the active
+    {
+        string trainerFolderPath = Path.Combine(TRAINERFOLDER);
+        string[] allTrainerPatchs = Directory.GetDirectories(trainerFolderPath);
+        Trainer[] trainers = new Trainer[allTrainerPatchs.Length];
+
+        for (int i = 0; i < allTrainerPatchs.Length; i++)
+        {
+            string[] files = Directory.GetFiles(allTrainerPatchs[i]);
+            string json = File.ReadAllText(files[0]);
+            Trainer trainer = JsonConvert.DeserializeObject<Trainer>(json);
+            trainers[i] = trainer;
+        }
+
+        return DeleteNonActiveTrainers(trainers);
+    }
+
+    private static Trainer[] DeleteNonActiveTrainers(Trainer[] trainers)//remove all inActive clients
+    {
+        int sizeOfActiveTrainers = 0;
+
+        foreach (Trainer trainer in trainers)
+        {
+            sizeOfActiveTrainers += trainer.IsActive ? 1 : 0;
+        }
+
+        Trainer[] activeTrainers = new Trainer[sizeOfActiveTrainers];
+        int index = 0;
+
+        for (int i = 0; i < trainers.Length; i++)
+        {
+            if (trainers[i].IsActive)
+            {
+                activeTrainers[index] = trainers[i];
+                index++;
+            }
+        }
+
+        return activeTrainers;
+    }
+
+    public static bool IsTrainerExist(string id)
+    {
+        string trainerFolderPath = Path.Combine(TRAINERFOLDER, id);
+
+        return Directory.Exists(trainerFolderPath);
+    }
+
+    public static void TrainerUpdateIdChanged(Trainer trainer, string id)
+    {
+        string trainerFolderPath = Path.Combine(TRAINERFOLDER, id);
+        DeleteDirectory(trainerFolderPath);
+        TrainerAdd(trainer);
+    }
+
+    public static Trainer GetTrainerById(string id)
+    {
+        string trainerFolderPath = Path.Combine(TRAINERFOLDER, id);
+        string trainerFilePath = Path.Combine(trainerFolderPath, TRAINERFILENAME);
+        string json = File.ReadAllText(trainerFilePath);
+        Trainer trainer = JsonConvert.DeserializeObject<Trainer>(json);
+
+        return trainer;
+    }
+
+    public static void DeleteDirectory(string directoryToDelete) 
+    {
+        string[] allDirectory = Directory.GetDirectories(directoryToDelete);
+        foreach (string directory in allDirectory) 
+        {
+            DeleteDirectory(directory);
+        }
+
+        string[] allDirectoryFile = Directory.GetFiles(directoryToDelete);
+
+        foreach (string  file in allDirectoryFile) 
+        {
+            File.Delete(file);
+        }
+
+        Directory.Delete(directoryToDelete);
     }
 }

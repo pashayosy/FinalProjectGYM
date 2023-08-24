@@ -70,6 +70,10 @@ namespace FinalProjectGYM.Models.ClientModel
             {
                 case (int)CLIENTPROPS.ID:
                     data = CorrectInput("Input id for change:", PersonValidation.IsCorrectId);
+                    while (FileHandle.IsClientExist(data)) 
+                    {
+                        data = CorrectInput("Input id for change:", PersonValidation.IsCorrectId);
+                    }
                     string temp;
                     temp = client.Id;
                     client.Id = data;

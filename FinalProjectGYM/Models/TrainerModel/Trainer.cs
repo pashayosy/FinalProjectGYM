@@ -1,5 +1,6 @@
 ﻿using System;
 using FinalProjectGYM.Models.PersonModel;
+using Newtonsoft.Json;
 
 namespace FinalProjectGYM.Models.TrainerModel
 {
@@ -34,7 +35,7 @@ namespace FinalProjectGYM.Models.TrainerModel
             set { _isActive = value; }
         }
 
-
+        [JsonConstructor]
         public Trainer(string id, string name, string lastName, char gender, string date, string city, string address, string phone, string email, BankDetails bankAccount, string profession) : base(id, name, lastName, gender, date, city, address, phone, email)
         {
             _bankAccount = new BankDetails(bankAccount);

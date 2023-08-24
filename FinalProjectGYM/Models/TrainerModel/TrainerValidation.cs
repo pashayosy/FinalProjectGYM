@@ -14,7 +14,7 @@ namespace FinalProjectGYM.Models.TrainerModel
 				}
 			}
 
-			return false;
+			return true;
 		}
 
         public static bool IsCorrectBankBranch(string bankBranch)//check if the branch correct
@@ -28,7 +28,7 @@ namespace FinalProjectGYM.Models.TrainerModel
                 }
             }
 
-            return false;
+            return true;
         }
 
         public static bool IsCorrectBankAccountNumber(string backAccountNumber)//check if the bank account number correct
@@ -42,7 +42,7 @@ namespace FinalProjectGYM.Models.TrainerModel
                 }
             }
 
-            return false;
+            return true;
         }
 
         public static bool IsCorrectProfession(string profession)//check if the profession correct

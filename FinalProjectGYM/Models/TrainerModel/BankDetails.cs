@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 namespace FinalProjectGYM.Models.TrainerModel
 {
 	public class BankDetails
@@ -34,6 +35,7 @@ namespace FinalProjectGYM.Models.TrainerModel
         }
         private string _bankAccountNumber;
 
+        [JsonConstructor]
         public BankDetails(string bankName, string bankBranch, string bankAccountNuber)
         {
             _bankName = bankName;

@@ -1,0 +1,1 @@
+{"BankAccount":{"BankName":"gsd","BankBranch":"123","BankAccountNumber":"3123312"},"Profession":"dsad","IsActive":true,"Id":"123123122","Name":"asd","LastName":"asd","Gender":"f","Date":"12/21/2121","City":"dsad","Address":"das","Phone":"0312","Email":"s@dsfa"}
